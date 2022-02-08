@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SignUpForm</string>
+    <string name="sign_up_form">Sign Up Form</string>
+    <string name="sign_me_up">Sign Me Up!</string>
+    <string name="set_password">Set Password</string>
+    <string name="set_email_address">Set Email Address</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
