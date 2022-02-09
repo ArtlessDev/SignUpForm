@@ -2,7 +2,8 @@ package edu.temple.signupform
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -10,8 +11,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //TODO(have button only work if all the criterias are met, which consist of: proper email, matching passwords and modify welcome message to say user's name)
-        val welcomeMessage = findViewById<TextView>(R.id.welcomeMessage)
-        findViewById<Button>(R.id.button).setOnClickListener{welcomeMessage.text = "Thanks For Signing Up!"}
+        val welcomeMessage = "Thanks For Signing Up!"
+        val inputEmail = findViewById<EditText>(R.id.textEmailAddress)
+        val inputPasswordAuthentication = findViewById<EditText>(R.id.textPassword)
+        val inputPasswordConfirmation = findViewById<EditText>(R.id.textPasswordConfirm)
+
+        val toastText = "Error, not all parameters are filled out"
+        val duration = Toast.LENGTH_SHORT
+
+        val button = findViewById<Button>(R.id.button)
+
+        button.setOnClickListener() {
+            val passA = inputPasswordAuthentication.getText().toString()
+            val passC = inputPasswordConfirmation.getText().toString()
+            val emailIn = inputEmail.getText().toString()
+
+            if(!passA.equals(passC) || emailIn.isNullOrEmpty()) {
+                val toast = Toast.makeText(this, toastText, duration).show()
+            }
+            else if(passA.equals(passC) && !emailIn.isNullOrEmpty()) {
+                val toast = Toast.makeText(this, welcomeMessage, duration).show()
+            }
+
+        }
+
     }
 }
